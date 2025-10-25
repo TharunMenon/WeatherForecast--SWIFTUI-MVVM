@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+
+    <!-- OpenWeatherMap API Key -->
+    <key>OPENWEATHER_API_KEY</key>
+    <string>a30b467f6cd5803fee55c88ec2824a99</string>
+
+    <!-- Location usage descriptions -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app uses your location to provide a 5-day weather forecast for your area.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app uses your location to provide up-to-date weather forecasts even when the app is in the background.</string>
+
+</dict>
+</plist>
