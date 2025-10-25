@@ -1,4 +1,4 @@
-name: CI
+name: iOS CI - WeatherForecast
 
 on:
   push:
@@ -11,19 +11,17 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Ruby (for bundler if needed)
-        uses: ruby/setup-ruby@v1
 
       - name: Install SwiftLint
-        run: |
-          if ! command -v swiftlint &> /dev/null; then
-            brew install swiftlint || true
-          fi
+        run: brew install swiftlint || echo "SwiftLint already installed"
 
       - name: Run SwiftLint
         run: swiftlint || true
 
+      - name: Build
+        run: xcodebuild build -workspace WeatherForecast.xcworkspace -scheme WeatherForecast -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty
+
       - name: Run tests and collect coverage
-        run: |
+        run: codebuild test -workspace WeatherForecast.xcworkspace -scheme WeatherForecast -destination 'platform=iOS Simulator,name=iPhone 14' -enableCodeCoverage YES | xcpretty
           set -o pipefail
-          xcodebuild test -workspace WeatherForecast.xcworkspace -scheme WeatherForecast -destination 'platform=iOS Simulator,name=iPhone 14' -enableCodeCoverage YES | xcpretty
+          xcodebuild test -workspace WeatherForecast.xcodeproj -scheme WeatherForecast -destination 'platform=iOS Simulator,name=iPhone 14' -enableCodeCoverage YES | xcpretty
