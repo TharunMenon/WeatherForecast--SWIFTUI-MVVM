@@ -12,7 +12,7 @@ import CoreLocation
 final class ForecastTests: XCTestCase {
 
     func testGroupingAndBackgroundMapping() async throws {
-        // Prepare a fake response with different weather mains across days
+        // mock response with different weather mains across days
         let now = Date()
         let calendar = Calendar.current
         let day1 = calendar.startOfDay(for: now)
@@ -60,7 +60,6 @@ final class ForecastTests: XCTestCase {
         let vm = await MainActor.run { CCForecastViewModel(locationManager: CCLocationManager(), service: mock) }
 
         // Mock time: simulate a time at 2:00 UTC (night)
-        // We can't change system time here; instead rely on loadForecast computing based on UTC now. For the test, we'll assume current time; to assert behavior deterministically we'd need to inject a clock, but at least ensure loadForecast doesn't crash and sets m_isNight to a Bool.
         await vm.loadForecast(for: CLLocationCoordinate2D(latitude: 0, longitude: 0))
         await MainActor.run {
             XCTAssertTrue(vm.m_isNight == true || vm.m_isNight == false)

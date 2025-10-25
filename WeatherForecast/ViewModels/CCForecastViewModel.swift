@@ -29,7 +29,7 @@ final class CCForecastViewModel: ObservableObject {
             }
             .store(in: &m_cancellables)
 
-        // DEV: If running in a simulator and no location is provided, fallback after a short delay for testing.
+        // DEVLOPMENT:  Simulator and no location is provided, fallback after a short delay for testing.
 #if DEBUG
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { [weak self] in
             guard let self = self else { return }
@@ -65,12 +65,11 @@ final class CCForecastViewModel: ObservableObject {
                 let localNow = nowUTC + tz
                 m_isNight = !(localNow >= (sunrise + tz) && localNow < (sunset + tz))
             } else {
-                // fallback to local hour heuristic
                 let hour = Calendar.current.component(.hour, from: Date())
                 m_isNight = !(6...18).contains(hour)
             }
         } catch {
-            // Clear existing forecasts on failure and log error for debugging.
+            // forecasts on failure and log error for debugging.
             m_dailyForecasts = []
             m_backgroundType = .unknown
             m_cityName = ""
@@ -79,7 +78,7 @@ final class CCForecastViewModel: ObservableObject {
     }
 
     static func groupDaily(from response: CCMultiDayForecastResponse) -> [CCDailyForecast] {
-        // Group by day (local calendar) and pick midday reading
+        //Calender
         let calendar = Calendar.current
         let grouped = Dictionary(grouping: response.list) { item in
             calendar.startOfDay(for: Date(timeIntervalSince1970: item.dt))

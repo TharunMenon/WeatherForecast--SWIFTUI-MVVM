@@ -19,8 +19,7 @@ final class CCLocationManager: NSObject, ObservableObject {
     }
 
     func requestLocation() {
-        // If authorization is not determined, ask for permission first.
-        // Only request a one-time location after we have authorization.
+        // Location Permission
         let current = CLLocationManager.authorizationStatus()
         switch current {
         case .notDetermined:

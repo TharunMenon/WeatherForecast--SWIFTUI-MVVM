@@ -3,7 +3,7 @@ import Foundation
 //  WeatherForecast
 //  Created by Tharun Menon on 24/10/25.
 
-// API models - mirror only needed fields from OpenWeatherMap 5 day forecast
+// API models - From OpenWeatherMap 5 day forecast
 struct CCMultiDayForecastResponse: Codable {
     let list: [CCForecastItem]
     let city: CCCity
@@ -33,7 +33,7 @@ struct CCCity: Codable {
     let timezone: Int?
 }
 
-// View model friendly daily forecast
+// View model daily forecast
 struct CCDailyForecast: Identifiable {
     let id = UUID()
     let date: Date

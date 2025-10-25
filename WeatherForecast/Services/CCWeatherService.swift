@@ -42,7 +42,7 @@ final class CCWeatherService: CCWeatherServiceProtocol {
     }
 }
 
-// Simple mock for unit tests
+// mock for unit tests
 final class CCWeatherServiceMock: CCWeatherServiceProtocol {
     var m_response: CCMultiDayForecastResponse?
     var m_error: Error?
