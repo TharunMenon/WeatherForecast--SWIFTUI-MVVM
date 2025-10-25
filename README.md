@@ -1,6 +1,11 @@
 # WeatherForecast--SWIFTUI-MVVM
 SwiftUI iOS app showing a 5-day weather forecast using OpenWeatherMap API. Built with MVVM, Combine, and CoreLocation.
 
+<img width="406" height="735" alt="Screenshot 2025-10-25 at 12 11 54 PM" src="https://github.com/user-attachments/assets/91cf4e48-6744-4b88-89bc-55f6473e9acd" />
+<img width="477" height="688" alt="Screenshot 2025-10-25 at 12 12 24 PM" src="https://github.com/user-attachments/assets/72cff2a4-04bc-437d-8993-8293fffb8f28" />
+
+
+
 Features
 
 Location-based Forecasts — Automatically fetches the user’s current location.
